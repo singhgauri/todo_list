@@ -1,4 +1,4 @@
-package com.example.todolist;
+package com.example.todoList;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -16,8 +16,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
@@ -26,18 +26,14 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ItemAdapter adapter;
-    RecyclerView.LayoutManager LinearLayoutManger;
     List<Item> items;
     Button buttonAdd;
     public ItemDao itemDao;
-    RecyclerView.ViewHolder viewHolder;
-    Iterator iterator;
     int i1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-         ItemDao itemDao;
          items = new ArrayList<>();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -50,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-        buttonAdd = findViewById(R.id.addbutton);
+        buttonAdd = findViewById(R.id.addButton);
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,19 +97,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //private ItemDao itemDao;
-    //private List<Item> allItems;
-
 
     public void delete(Item item) {
 
         class DeleteItemAsyncTask extends AsyncTask<Item,Void ,Void> {
-            private ItemDao itemDao;
-            Item item;
 
 
             public DeleteItemAsyncTask(ItemDao itemDao) {
-                this.itemDao = itemDao;
+                new MainActivity().itemDao = itemDao;
             }
 
 
@@ -129,17 +120,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-
-                /*Iterator i = items.iterator();
-                String str = "";
-                while (i.hasNext()) {
-                    str = (String) i.next();
-                    if (str.equals(item)) {
-                        i.remove();
-                        break;
-                    }
-                }*/
-
 
                 items.remove(0);
                 adapter.notifyItemRemoved(i1);
@@ -157,10 +137,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         class DeleteAllItemsAsyncTask extends AsyncTask<Void,Void ,Void> {
-            private ItemDao itemDao;
 
             public DeleteAllItemsAsyncTask(ItemDao itemDao) {
-                this.itemDao = itemDao;
+                new MainActivity().itemDao = itemDao;
             }
 
             @Override
@@ -173,8 +152,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                //items.remove(adapter.getItemAt(getAdapterPosition()));
-                //adapter.setItems(items);
                 adapter.notifyDataSetChanged();
 
             }
@@ -187,10 +164,10 @@ public class MainActivity extends AppCompatActivity {
 
         //final List<Item> items = new ArrayList<>();
         class GetAllItems extends AsyncTask<Void, Void, List<Item>> {
-            private ItemDao itemDao;
+
 
             public GetAllItems(ItemDao itemDao) {
-                this.itemDao = itemDao;
+                new MainActivity().itemDao = itemDao;
             }
 
             @Override

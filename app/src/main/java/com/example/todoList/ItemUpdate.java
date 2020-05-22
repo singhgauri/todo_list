@@ -1,4 +1,4 @@
-package com.example.todolist;
+package com.example.todoList;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -9,8 +9,6 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,12 +17,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
+import com.example.todoList.R;
+import com.example.todoList.Item;
+import com.example.todoList.ItemDao;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class ItemUpdate extends AppCompatActivity {
 
@@ -34,11 +34,10 @@ public class ItemUpdate extends AppCompatActivity {
     Item item,item1;
     Button button1,button2;
     String name1,description1,date0,date11,strDate;
-    //int date11;
     Date date;
     int i;
     Date date111;
-    ImageView imageview1;
+    ImageView imageView1;
     Bitmap bmpImage,bmpImage1;
 
     @Override
@@ -46,14 +45,12 @@ public class ItemUpdate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_update);
 
-        name = findViewById(R.id.updateitem);
-        description = findViewById(R.id.updatedescription);
-        date1 = findViewById(R.id.updatedate);
-        button1 = findViewById(R.id.reminderbutton);
-        button2 = findViewById(R.id.takeimage1);
-        imageview1 = findViewById(R.id.imageview1);
-
-        //Item item = (Item) getIntent().getSerializableExtra("item");
+        name = findViewById(R.id.updateItem);
+        description = findViewById(R.id.updateDescription);
+        date1 = findViewById(R.id.updateDate);
+        button1 = findViewById(R.id.reminderButton);
+        button2 = findViewById(R.id.takeImage1);
+        imageView1 = findViewById(R.id.imageView1);
 
         item = (Item) getIntent().getSerializableExtra("item");
         loadItem(item);
@@ -63,13 +60,6 @@ public class ItemUpdate extends AppCompatActivity {
 
         date0 = date1.getText().toString().trim();
 
-
-        /*SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-        try {
-            date111 = format.parse(date0);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }*/
 
         date111 = new Date(date0);
 
@@ -101,7 +91,7 @@ public class ItemUpdate extends AppCompatActivity {
 
         Log.d("ABC","RRR");
 
-        findViewById(R.id.updatebutton).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.updateButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 update(item);
@@ -114,7 +104,7 @@ public class ItemUpdate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //String strdt =date1.getText().toString();
+
                 Intent intent = new Intent(ItemUpdate.this,Reminder.class);
                intent.putExtra("id", i);
                 intent.putExtra("name", name.getText().toString().trim());
@@ -151,7 +141,7 @@ public class ItemUpdate extends AppCompatActivity {
                 //if (requestCode== Activity.RESULT_OK){
                 bmpImage = (Bitmap) data.getExtras().get("data");
                 if(bmpImage !=null){
-                    imageview1.setImageBitmap(bmpImage);
+                    imageView1.setImageBitmap(bmpImage);
                 }
                 //}
                 break;
@@ -163,15 +153,11 @@ public class ItemUpdate extends AppCompatActivity {
 
     public void update(Item item){
 
-        //name = findViewById(R.id.updateitem);
-       // description = findViewById(R.id.updatedescription);
-        //date = findViewById(R.id.updatedate);
-
         name1= name.getText().toString().trim();
         description1 = description.getText().toString().trim();
         date11= date1.getText().toString().trim();
-        if (imageview1.getDrawable()!=null) {
-            bmpImage1 = ((BitmapDrawable) imageview1.getDrawable()).getBitmap();
+        if (imageView1.getDrawable()!=null) {
+            bmpImage1 = ((BitmapDrawable) imageView1.getDrawable()).getBitmap();
         }else{
             bmpImage1 = null;
         }
@@ -246,7 +232,7 @@ public class ItemUpdate extends AppCompatActivity {
         description.setText(item.getDescription());
         date1.setText(String.valueOf(item.getDate()));
         if (item.getImage()!=null) {
-            imageview1.setImageBitmap(DataConverter.convertByteArray2Image(item.getImage()));
+            imageView1.setImageBitmap(DataConverter.convertByteArray2Image(item.getImage()));
         }
         Log.d("ABC","finally");
         //item1 =new Item(item.getName(),);

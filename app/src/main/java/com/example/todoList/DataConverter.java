@@ -1,4 +1,4 @@
-package com.example.todolist;
+package com.example.todoList;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

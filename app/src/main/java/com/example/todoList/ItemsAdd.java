@@ -1,6 +1,5 @@
-package com.example.todolist;
+package com.example.todoList;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,6 +16,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.todoList.R;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,7 +26,7 @@ import java.util.Date;
 public class ItemsAdd extends AppCompatActivity {
 
     ItemDao itemDao;
-    public EditText additem,adddescription,adddate;
+    public EditText addItem,addDescription,addDate;
     Button button1,button2;
     Date date;
     Item item;
@@ -37,16 +38,16 @@ public class ItemsAdd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_items);
 
-        // EditText adddate;
 
-        additem = findViewById(R.id.additems);
-        adddescription = findViewById(R.id.adddescription);
-        adddate = findViewById(R.id.adddate);
-        button2=findViewById(R.id.takeimage);
-        imageview = findViewById(R.id.imageview);
+
+        addItem = findViewById(R.id.addItems);
+        addDescription = findViewById(R.id.addDescription);
+        addDate = findViewById(R.id.addDate);
+        button2=findViewById(R.id.takeImage);
+        imageview = findViewById(R.id.imageView);
         //bmpImage =null;
 
-        adddate.setOnClickListener(new View.OnClickListener() {
+        addDate.setOnClickListener(new View.OnClickListener() {
 
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
@@ -58,7 +59,7 @@ public class ItemsAdd extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(ItemsAdd.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        adddate.setText(year +"-"+(month+1)+"-"+day);
+                        addDate.setText(year +"-"+(month+1)+"-"+day);
                     }
                 },year,month,day);
                 datePickerDialog.show();
@@ -67,7 +68,7 @@ public class ItemsAdd extends AppCompatActivity {
 
 
 
-        button1 = findViewById(R.id.savebutton);
+        button1 = findViewById(R.id.saveButton);
 
         button1.setOnClickListener(new View.OnClickListener() {
 
@@ -114,34 +115,34 @@ public class ItemsAdd extends AppCompatActivity {
     public  void insert() {
 
 
-        final String additem1 = additem.getText().toString().trim();
-        final String adddescription1 = adddescription.getText().toString().trim();
-        final String adddate1 = adddate.getText().toString().trim();
+        final String addItem1 = addItem.getText().toString().trim();
+        final String addDescription1 = addDescription.getText().toString().trim();
+        final String addDate1 = addDate.getText().toString().trim();
         //final Byte[] image1 = DataConverter.convertImage2ByteArray(bmpImage);
 
-        if (additem1.isEmpty()) {
-            additem.setError("Item required");
-            additem.requestFocus();
+        if (addItem1.isEmpty()) {
+            addItem.setError("Item required");
+            addItem.requestFocus();
             return;
         }
 
-        if (adddescription1.isEmpty()) {
-            adddescription.setError("Description required");
-            adddescription.requestFocus();
+        if (addDescription1.isEmpty()) {
+            addDescription.setError("Description required");
+            addDescription.requestFocus();
             return;
         }
 
-        if (adddate1.isEmpty()) {
-            adddate.setError("Date required");
-            adddate.requestFocus();
+        if (addDate1.isEmpty()) {
+            addDate.setError("Date required");
+            addDate.requestFocus();
             return;
         }
 
-        //final int adddate11 = Integer.parseInt(adddate1);
+
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            date = format.parse(adddate1);
+            date = format.parse(addDate1);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -150,11 +151,10 @@ public class ItemsAdd extends AppCompatActivity {
 
 
         class InsertItemAsyncTask extends AsyncTask<Void,Void ,Void> {
-            private ItemDao itemDao;
 
 
             public InsertItemAsyncTask(ItemDao itemDao) {
-                this.itemDao = itemDao;
+                new ItemsAdd().itemDao = itemDao;
             }
 
             @Override
@@ -162,9 +162,9 @@ public class ItemsAdd extends AppCompatActivity {
 
                 if(bmpImage!=null) {
 
-                    item = new Item(additem1, adddescription1, date, DataConverter.convertImage2ByteArray(bmpImage));
+                    item = new Item(addItem1, addDescription1, date, DataConverter.convertImage2ByteArray(bmpImage));
                 }else {
-                    item = new Item(additem1, adddescription1, date, null);
+                    item = new Item(addItem1, addDescription1, date, null);
                 }
 
 

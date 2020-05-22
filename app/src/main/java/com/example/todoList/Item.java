@@ -1,10 +1,12 @@
-package com.example.todolist;
+package com.example.todoList;
 import java.io.Serializable;
 import java.util.Date;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 
 @Entity(tableName= "item_table")
 public class Item implements Serializable {

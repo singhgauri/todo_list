@@ -1,16 +1,15 @@
-package com.example.todolist;
+package com.example.todoList;
 
+import android.arch.persistence.db.SupportSQLiteDatabase;
+import android.arch.persistence.room.Database;
+import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.room.Database;
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
-import androidx.sqlite.db.SupportSQLiteDatabase;
-
+import android.arch.persistence.room.Room;
 import static android.content.ContentValues.TAG;
 
 @Database(entities = {Item.class},version = 3,exportSchema = false)
@@ -44,9 +43,10 @@ public abstract class ItemDatabase extends RoomDatabase {
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void,Void,Void> {
 
-        private ItemDao itemDao;
+
 
         private PopulateDbAsyncTask(ItemDatabase db) {
+            ItemDao itemDao;
             itemDao = db.itemDao();
 
         }

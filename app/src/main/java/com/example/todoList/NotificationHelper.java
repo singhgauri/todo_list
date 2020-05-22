@@ -1,4 +1,4 @@
-package com.example.todolist;
+package com.example.todoList;
 
 
 import android.annotation.TargetApi;
@@ -10,6 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
         import android.support.v4.app.NotificationCompat;
+
+import com.example.todoList.R;
 
 
 public class NotificationHelper extends ContextWrapper {

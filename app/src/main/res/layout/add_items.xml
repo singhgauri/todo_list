@@ -6,13 +6,14 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/imageview"
+        android:id="@+id/imageView"
         android:layout_width="250dp"
-        android:layout_height="250dp">
+        android:layout_height="250dp"
+        android:contentDescription="@string/image_des">
     </ImageView>
 
     <Button
-        android:id="@+id/takeimage"
+        android:id="@+id/takeImage"
         android:layout_width="185dp"
         android:layout_height="75dp"
         android:text="Take Picture">
@@ -20,7 +21,7 @@
     </Button>
 
     <EditText
-        android:id="@+id/additems"
+        android:id="@+id/addItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -29,7 +30,7 @@
         android:hint="Add item" />
 
     <EditText
-        android:id="@+id/adddescription"
+        android:id="@+id/addDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -37,7 +38,7 @@
         android:hint="Add Description" />
 
     <EditText
-        android:id="@+id/adddate"
+        android:id="@+id/addDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -45,7 +46,7 @@
         android:hint="Input Date" />
 
     <Button
-        android:id="@+id/savebutton"
+        android:id="@+id/saveButton"
         android:layout_width="169dp"
         android:layout_height="71dp"
         android:text="Save" />

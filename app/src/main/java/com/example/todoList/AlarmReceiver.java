@@ -1,6 +1,5 @@
-package com.example.todolist;
+package com.example.todoList;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +10,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     String name;
     @Override
     public void onReceive(Context context, Intent intent) {
-        i1 = intent.getIntExtra("notiid", i1);
+        i1 = intent.getIntExtra("notification_id", i1);
         name = intent.getStringExtra("name");
 
         NotificationHelper notificationHelper = new NotificationHelper(context,name);

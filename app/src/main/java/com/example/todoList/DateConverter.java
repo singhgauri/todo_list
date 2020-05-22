@@ -1,9 +1,8 @@
-package com.example.todolist;
+package com.example.todoList;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import androidx.room.TypeConverter;
+import android.arch.persistence.room.TypeConverter;
 
 
 

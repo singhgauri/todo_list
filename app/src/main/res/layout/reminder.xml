@@ -15,14 +15,14 @@
 
 
     <Button
-        android:id="@+id/setreminder"
+        android:id="@+id/setReminder"
         android:layout_width="169dp"
         android:layout_height="71dp"
         android:textStyle="bold"
         android:text="Set Reminder" />
 
     <Button
-        android:id="@+id/cancelreminder"
+        android:id="@+id/cancelReminder"
         android:layout_width="169dp"
         android:layout_height="71dp"
         android:textStyle="bold"

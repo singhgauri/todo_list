@@ -1,4 +1,4 @@
-package com.example.todolist;
+package com.example.todoList;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 //import java.util.ArrayList;
+import com.example.todoList.R;
+
 import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
@@ -34,7 +36,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
             holder.textViewDescription.setText(currentItem.getDescription());
             holder.textViewDate.setText(String.valueOf(currentItem.getDate()));
             if (currentItem.getImage()!=null) {
-                holder.imageview2.setImageBitmap(DataConverter.convertByteArray2Image(currentItem.getImage()));
+                holder.imageView2.setImageBitmap(DataConverter.convertByteArray2Image(currentItem.getImage()));
             }
         }
 
@@ -66,7 +68,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
         private TextView textViewName;
         private TextView textViewDescription;
         private TextView textViewDate;
-        private ImageView imageview2;
+        private ImageView imageView2;
 
 
         public ItemHolder(View itemView) {
@@ -74,7 +76,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
             textViewName = itemView.findViewById(R.id.name);
             textViewDescription = itemView.findViewById(R.id.description);
             textViewDate = itemView.findViewById(R.id.date);
-            imageview2 = itemView.findViewById(R.id.imageview2);
+            imageView2 = itemView.findViewById(R.id.imageView2);
             itemView.setOnClickListener(this);
         }
 

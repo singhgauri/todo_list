@@ -1,4 +1,4 @@
-package com.example.todolist;
+package com.example.todoList;
 
 import android.app.AlarmManager;
 import android.support.v4.app.DialogFragment;
@@ -8,14 +8,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-//import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.example.todoList.R;
 
 import java.util.Calendar;
 
@@ -24,17 +24,17 @@ public class Reminder extends AppCompatActivity implements TimePickerDialog.OnTi
     Button button1,button2;
 
     int h,m,i1,i;
-    String name, description,strdate, year,month,day,time;
+    String name, description,strDate, year,month,day,time;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reminder);
 
-        button1 = findViewById(R.id.setreminder);
-        button2 = findViewById(R.id.cancelreminder);
+        button1 = findViewById(R.id.setReminder);
+        button2 = findViewById(R.id.cancelReminder);
 
-        strdate = getIntent().getStringExtra("date");
+        strDate = getIntent().getStringExtra("date");
         //item = (Item) getIntent().getSerializableExtra("item1");
         name = getIntent().getStringExtra("name");
         description = getIntent().getStringExtra("description");
@@ -57,7 +57,7 @@ public class Reminder extends AppCompatActivity implements TimePickerDialog.OnTi
             }
         });
 
-        String[] dateList = strdate.split("-");
+        String[] dateList = strDate.split("-");
 
         year = dateList[0];
         month = dateList[1];
@@ -65,47 +65,6 @@ public class Reminder extends AppCompatActivity implements TimePickerDialog.OnTi
 
     }
 
-    /*private void checkTime() {
-
-            for (int i = 0; i < 10; i++) {
-                if (arr[i][0] != null) {
-                    flag = false;
-                }
-            }
-            if (flag == false) {
-                for (i = 0; i < 10; i++) {
-                    if (arr[i][2] != null) {
-                        String[] dateList = arr[i][2].split("-");
-
-                        year = dateList[0];
-                        month = dateList[1];
-                        day = dateList[2];
-
-                        String[] timeList = arr[i][3].split(":");
-                        hour = timeList[0];
-                        minute = timeList[1];*/
-
-
-
-                    /*Calendar c = Calendar.getInstance();
-
-                    if (Integer.parseInt(year) == c.get(Calendar.YEAR)) {
-                        if (Integer.parseInt(month) - 1 == c.get(Calendar.MONTH)) {
-                            if (Integer.parseInt(day) == c.get(Calendar.DAY_OF_MONTH)) {
-                                if (Integer.parseInt(hour) == c.get(Calendar.HOUR_OF_DAY)) {
-                                    if (Integer.parseInt(minute) == c.get(Calendar.MINUTE)) {
-                                        setReminder(year, month, day, hour, minute);
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-
-                    }
-                }
-            }
-        }*/
 
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -114,19 +73,6 @@ public class Reminder extends AppCompatActivity implements TimePickerDialog.OnTi
         m = minute;
         time = h + ":" + (m);
 
-        /*for(int i=0;i<10;i++){
-
-            if(arr[i][0]==null) {
-                arr[i][0] = name;
-                arr[i][1] = description;
-                arr[i][2] = strdate;
-                arr[i][3] = time;
-                break;
-
-            }
-
-        }
-        checkTime();*/
 
         setReminder(i1,name,year,month,day,h,m);
         Toast.makeText(getApplicationContext(), "Reminder Set for " + h + ":" + m + " " + "at" + " " + day + "-" + month + "-" + year, Toast.LENGTH_LONG).show();
@@ -139,21 +85,13 @@ public class Reminder extends AppCompatActivity implements TimePickerDialog.OnTi
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this,AlarmReceiver.class);
-        intent.putExtra("notiid",i);
+        intent.putExtra("notification_id",i);
         intent.putExtra("name",name);
 
         PendingIntent pendingintent = PendingIntent.getBroadcast(this,i,intent,0);
 
-        Log.d("ABCDEF","working");
-
         Calendar calendar = Calendar.getInstance();
-        //calendar.setTimeInMillis(System.currentTimeMillis());
-        //String strdate = String.valueOf(item.getDate());
-        //String[] dateList = strdate.split("-");
 
-        //year = dateList[0];
-        //month = dateList[1];
-        //day = dateList[2];
 
         Log.d("www","year");
 
