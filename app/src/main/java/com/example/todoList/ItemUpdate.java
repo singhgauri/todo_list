@@ -23,6 +23,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class ItemUpdate extends AppCompatActivity {
@@ -58,9 +59,9 @@ public class ItemUpdate extends AppCompatActivity {
         i = item.getId();
         String date0 = date1.getText().toString().trim();
 
-        DateFormat df = new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy");
+        DateFormat df = new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
         //Desired format: 24 hour format: Change the pattern as per the need
-        DateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault());
         try{
 
             Log.d("Date",date0);
@@ -181,7 +182,7 @@ public class ItemUpdate extends AppCompatActivity {
             return;
         }
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault());
         try {
             date = format.parse(date11);
         } catch (ParseException e) {

@@ -137,7 +137,7 @@ public class ItemsAdd extends AppCompatActivity {
 
 
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd",java.util.Locale.getDefault());
         try {
             date = format.parse(addDate1);
         } catch (ParseException e) {
