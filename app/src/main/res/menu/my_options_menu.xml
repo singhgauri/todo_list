@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/delete_all_items"
-        android:title="Delete All Items"
+        android:title="@string/Delete_All"
         app:showAsAction="never" />
 
 </menu>

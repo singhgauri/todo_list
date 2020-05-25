@@ -7,7 +7,7 @@ import android.arch.persistence.room.TypeConverter;
 
 
 
-public class DateConverter {
+class DateConverter {
 
     @TypeConverter
     public Date fromTimestamp(Long value) {

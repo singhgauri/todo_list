@@ -23,7 +23,7 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                android:text="@string/Name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:maxLines="1"
                 android:ellipsize="end"/>
@@ -33,7 +33,7 @@
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description"
+                android:text="@string/Description"
                 />
 
 
@@ -41,7 +41,7 @@
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
+                android:text="@string/Date"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
 
 

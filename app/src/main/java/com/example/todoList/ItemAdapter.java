@@ -9,17 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-//import java.util.ArrayList;
-import com.example.todoList.R;
-
 import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
 
-    List<Item> items;
-    public Context context;
-    public String item;
+    private List<Item> items;
+    private final Context context;
+    //public String item;
 
     public ItemAdapter(Context context,List<Item> items) {
 
@@ -65,13 +61,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
     }
 
     class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
-        private TextView textViewName;
-        private TextView textViewDescription;
-        private TextView textViewDate;
-        private ImageView imageView2;
+        private final TextView textViewName;
+        private final TextView textViewDescription;
+        private final TextView textViewDate;
+        private final ImageView imageView2;
 
 
-        public ItemHolder(View itemView) {
+        ItemHolder(View itemView) {
             super(itemView);
             textViewName = itemView.findViewById(R.id.name);
             textViewDescription = itemView.findViewById(R.id.description);
@@ -89,9 +85,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
             intent.putExtra("item", item);
 
             context.startActivity(intent);
-
-            //Intent intent1 = new Intent(context, Reminder.class);
-            //intent1.putExtra("item", item);
 
         }
     }

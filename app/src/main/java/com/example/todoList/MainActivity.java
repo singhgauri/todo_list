@@ -24,12 +24,10 @@ import static android.content.ContentValues.TAG;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    ItemAdapter adapter;
-    List<Item> items;
-    Button buttonAdd;
-    public ItemDao itemDao;
-    int i1;
+    private ItemAdapter adapter;
+    private List<Item> items;
+    private ItemDao itemDao;
+    private int i1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView =findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         adapter = new ItemAdapter(this,items);
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-        buttonAdd = findViewById(R.id.addButton);
+        Button buttonAdd = findViewById(R.id.addButton);
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,25 +83,24 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.delete_all_items:
-                deleteAllItems();
-                Toast.makeText(this,"All Items Deleted" ,Toast.LENGTH_SHORT).show();
+        if(item.getItemId()==R.id.delete_all_items) {
+            deleteAllItems();
+            Toast.makeText(this, "All Items Deleted", Toast.LENGTH_SHORT).show();
 
-                return true;
-            default:
+            return true;
+        }else{
                 return super.onOptionsItemSelected(item);
         }
 
     }
 
 
-    public void delete(Item item) {
+    private void delete(Item item) {
 
         class DeleteItemAsyncTask extends AsyncTask<Item,Void ,Void> {
 
 
-            public DeleteItemAsyncTask(ItemDao itemDao) {
+            DeleteItemAsyncTask(ItemDao itemDao) {
                 new MainActivity().itemDao = itemDao;
             }
 
@@ -133,12 +130,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void deleteAllItems(){
+    private void deleteAllItems(){
 
 
         class DeleteAllItemsAsyncTask extends AsyncTask<Void,Void ,Void> {
 
-            public DeleteAllItemsAsyncTask(ItemDao itemDao) {
+            DeleteAllItemsAsyncTask(ItemDao itemDao) {
                 new MainActivity().itemDao = itemDao;
             }
 
@@ -160,13 +157,13 @@ public class MainActivity extends AppCompatActivity {
         new DeleteAllItemsAsyncTask(itemDao).execute();
 
     }
-    public void getAllItems(){
+    private void getAllItems(){
 
         //final List<Item> items = new ArrayList<>();
         class GetAllItems extends AsyncTask<Void, Void, List<Item>> {
 
 
-            public GetAllItems(ItemDao itemDao) {
+            GetAllItems(ItemDao itemDao) {
                 new MainActivity().itemDao = itemDao;
             }
 

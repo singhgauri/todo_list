@@ -14,13 +14,13 @@ public class Item implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    private String name;
+    private final String name;
 
-    private String description;
+    private final String description;
 
-    private Date date;
+    private final Date date;
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    private byte [] image;
+    private final byte [] image;
 
     public Item(String name, String description, Date date, byte [] image) {
         this.name = name;

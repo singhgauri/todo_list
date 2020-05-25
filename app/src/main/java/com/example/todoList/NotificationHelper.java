@@ -14,12 +14,12 @@ import android.os.Build;
 import com.example.todoList.R;
 
 
-public class NotificationHelper extends ContextWrapper {
-    public static final String channelID = "channelID";
-    public static final String channelName = "Channel Name";
+class NotificationHelper extends ContextWrapper {
+    private static final String channelID = "channelID";
+    private static final String channelName = "Channel Name";
 
     private NotificationManager mManager;
-    String name;
+    private final String name;
 
     public NotificationHelper(Context base,String name) {
         super(base);
@@ -52,7 +52,7 @@ public class NotificationHelper extends ContextWrapper {
                 .setContentIntent(pendingIntent)
                 .setContentText("Task : "+ name)
                 .setAutoCancel(true)
-                .setSmallIcon(R.drawable.icicon);
+                .setSmallIcon(R.drawable.ic_stat_name);
 
     }
 }

@@ -32,12 +32,12 @@ public abstract class ItemDatabase extends RoomDatabase {
         return instance;
     }
 
-    private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
+    private static final RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
 
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            new PopulateDbAsyncTask(instance).execute();
+            new PopulateDbAsyncTask().execute();
         }
     };
 
@@ -45,9 +45,7 @@ public abstract class ItemDatabase extends RoomDatabase {
 
 
 
-        private PopulateDbAsyncTask(ItemDatabase db) {
-            ItemDao itemDao;
-            itemDao = db.itemDao();
+        private PopulateDbAsyncTask() {
 
         }
 

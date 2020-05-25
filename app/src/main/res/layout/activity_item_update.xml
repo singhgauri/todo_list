@@ -10,14 +10,14 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:contentDescription="@string/image_des">
-        >
+
     </ImageView>
 
     <Button
         android:id="@+id/takeImage1"
         android:layout_width="185dp"
         android:layout_height="75dp"
-        android:text="Take Picture">
+        android:text="@string/Take_picture">
 
     </Button>
 
@@ -28,7 +28,8 @@
         android:ems="10"
         android:gravity="top"
         android:inputType="textPersonName"
-        android:hint="Add item" />
+        android:hint="@string/Add_name"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/updateDescription"
@@ -36,26 +37,27 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Add Description" />
+        android:hint="@string/Add_des"
+        android:importantForAutofill="no" />
 
-    <EditText
+    <TextView
         android:id="@+id/updateDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Input Date" />
+        android:textSize="18sp"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/updateButton"
         android:layout_width="169dp"
         android:layout_height="71dp"
-        android:text="Update" />
+        android:text="@string/Update" />
 
     <Button
         android:id="@+id/reminderButton"
         android:layout_width="169dp"
         android:layout_height="71dp"
-        android:text="Reminder" />
+        android:text="@string/Reminder" />
 
 </LinearLayout>

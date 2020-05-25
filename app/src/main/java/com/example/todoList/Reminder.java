@@ -14,30 +14,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import com.example.todoList.R;
-
 import java.util.Calendar;
 
 public class Reminder extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
-    Button button1,button2;
-
-    int h,m,i1,i;
-    String name, description,strDate, year,month,day,time;
+    private int h;
+    private int m;
+    private int i1;
+    private String name;
+    private String year;
+    private String month;
+    private String day;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reminder);
 
-        button1 = findViewById(R.id.setReminder);
-        button2 = findViewById(R.id.cancelReminder);
+        Button button1 = findViewById(R.id.setReminder);
+        Button button2 = findViewById(R.id.cancelReminder);
 
-        strDate = getIntent().getStringExtra("date");
+        String strDate = getIntent().getStringExtra("date");
         //item = (Item) getIntent().getSerializableExtra("item1");
         name = getIntent().getStringExtra("name");
-        description = getIntent().getStringExtra("description");
+        //String description = getIntent().getStringExtra("description");
         i1 = getIntent().getIntExtra("id", i1);
         Log.d("ABC", name);
 
@@ -71,8 +71,7 @@ public class Reminder extends AppCompatActivity implements TimePickerDialog.OnTi
 
         h = hourOfDay;
         m = minute;
-        time = h + ":" + (m);
-
+        //String time = h + ":" + (m);
 
         setReminder(i1,name,year,month,day,h,m);
         Toast.makeText(getApplicationContext(), "Reminder Set for " + h + ":" + m + " " + "at" + " " + day + "-" + month + "-" + year, Toast.LENGTH_LONG).show();

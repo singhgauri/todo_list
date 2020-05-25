@@ -6,7 +6,6 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/reminderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -19,13 +18,13 @@
         android:layout_width="169dp"
         android:layout_height="71dp"
         android:textStyle="bold"
-        android:text="Set Reminder" />
+        android:text="@string/setReminder" />
 
     <Button
         android:id="@+id/cancelReminder"
         android:layout_width="169dp"
         android:layout_height="71dp"
         android:textStyle="bold"
-        android:text="Cancel Reminder" />
+        android:text="@string/cancelReminder" />
 
 </LinearLayout>
