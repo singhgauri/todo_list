@@ -27,7 +27,7 @@ public class ItemsAdd extends AppCompatActivity {
     private ItemDao itemDao;
     private EditText addItem;
     private EditText addDescription;
-    private TextView addDate;
+    private TextView displayDate;
     private Date date;
     private Item item;
     private ImageView imageview;
@@ -37,12 +37,10 @@ public class ItemsAdd extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_items);
-
-
-
         addItem = findViewById(R.id.addItems);
         addDescription = findViewById(R.id.addDescription);
-        addDate = findViewById(R.id.addDate);
+        TextView addDate = findViewById(R.id.addDate);
+        displayDate = findViewById(R.id.displayDate);
         Button button2 = findViewById(R.id.takeImage);
         imageview = findViewById(R.id.imageView);
 
@@ -60,7 +58,7 @@ public class ItemsAdd extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         String s = year +"-"+(month+1)+"-"+day;
-                        addDate.setText(s);
+                        displayDate.setText(s);
                     }
                 },year,month,day);
                 datePickerDialog.show();
@@ -111,10 +109,9 @@ public class ItemsAdd extends AppCompatActivity {
 
     private void insert() {
 
-
         final String addItem1 = addItem.getText().toString().trim();
         final String addDescription1 = addDescription.getText().toString().trim();
-        final String addDate1 = addDate.getText().toString().trim();
+        final String addDate1 = displayDate.getText().toString().trim();
 
 
         if (addItem1.isEmpty()) {
@@ -130,8 +127,8 @@ public class ItemsAdd extends AppCompatActivity {
         }
 
         if (addDate1.isEmpty()) {
-            addDate.setError("Date required");
-            addDate.requestFocus();
+            displayDate.setError("Date required");
+            displayDate.requestFocus();
             return;
         }
 

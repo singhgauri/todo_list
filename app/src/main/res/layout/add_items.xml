@@ -48,6 +48,16 @@
         android:textSize="18sp"
         android:importantForAutofill="no" />
 
+    <TextView
+        android:id="@+id/displayDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="18sp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:importantForAutofill="no" />
+
     <Button
         android:id="@+id/saveButton"
         android:layout_width="169dp"

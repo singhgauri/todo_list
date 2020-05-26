@@ -176,11 +176,6 @@ public class ItemUpdate extends AppCompatActivity {
             return;
         }
 
-        if (date11.isEmpty()) {
-            date1.setError("Date required");
-            date1.requestFocus();
-            return;
-        }
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd",Locale.getDefault());
         try {

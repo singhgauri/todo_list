@@ -3,6 +3,7 @@ package com.example.todoList;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,13 +14,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
-
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static android.content.ContentValues.TAG;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-        Button buttonAdd = findViewById(R.id.addButton);
+        FloatingActionButton buttonAdd = findViewById(R.id.fab);
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
