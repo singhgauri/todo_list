@@ -5,18 +5,32 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:layout_gravity="center">
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:contentDescription="@string/image_des">
 
     </ImageView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.2"
+        android:orientation="vertical">
 
     <Button
         android:id="@+id/takeImage1"
         android:layout_width="185dp"
         android:layout_height="75dp"
+        android:layout_gravity="center"
         android:text="@string/Take_picture">
 
     </Button>
@@ -50,14 +64,18 @@
 
     <Button
         android:id="@+id/updateButton"
-        android:layout_width="169dp"
+        android:layout_width="wrap_content"
         android:layout_height="71dp"
+        android:layout_gravity="center"
         android:text="@string/Update" />
 
     <Button
         android:id="@+id/reminderButton"
-        android:layout_width="169dp"
+        android:layout_width="wrap_content"
         android:layout_height="71dp"
+        android:layout_gravity="center"
         android:text="@string/Reminder" />
+
+    </LinearLayout>
 
 </LinearLayout>

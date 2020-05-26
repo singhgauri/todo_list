@@ -52,6 +52,7 @@ public class ItemsAdd extends AppCompatActivity {
             final int month = calendar.get(Calendar.YEAR);
             final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
+
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(ItemsAdd.this, new DatePickerDialog.OnDateSetListener() {
@@ -61,6 +62,20 @@ public class ItemsAdd extends AppCompatActivity {
                         displayDate.setText(s);
                     }
                 },year,month,day);
+
+                Calendar c = Calendar.getInstance();
+
+                Calendar c1 = Calendar.getInstance();
+                c1.set(Calendar.YEAR,2050);
+                c1.set(Calendar.MONTH,0);
+                c1.set(Calendar.DAY_OF_MONTH,1);
+
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+                datePickerDialog.getDatePicker().setMaxDate(c1.getTimeInMillis());
+                /*int year = c.get(Calendar.YEAR);
+                int month= c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog.getDatePicker().init(year,month,day);*/
                 datePickerDialog.show();
             }
         });
