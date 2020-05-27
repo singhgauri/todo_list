@@ -17,7 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -90,6 +89,19 @@ public class ItemUpdate extends AppCompatActivity {
                         date1.setText(s1);
                     }
                 },year,month,day);
+
+                Calendar c = Calendar.getInstance();
+                Calendar c1 = Calendar.getInstance();
+                c1.set(Calendar.YEAR,2050);
+                c1.set(Calendar.MONTH,0);
+                c1.set(Calendar.DAY_OF_MONTH,1);
+
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+                datePickerDialog.getDatePicker().setMaxDate(c1.getTimeInMillis());
+                int year = c.get(Calendar.YEAR);
+                int month= c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog.getDatePicker().init(year,month,day,null);
                 datePickerDialog.show();
             }
         });

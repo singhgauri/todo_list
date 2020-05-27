@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -64,7 +63,6 @@ public class ItemsAdd extends AppCompatActivity {
                 },year,month,day);
 
                 Calendar c = Calendar.getInstance();
-
                 Calendar c1 = Calendar.getInstance();
                 c1.set(Calendar.YEAR,2050);
                 c1.set(Calendar.MONTH,0);
@@ -72,10 +70,10 @@ public class ItemsAdd extends AppCompatActivity {
 
                 datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
                 datePickerDialog.getDatePicker().setMaxDate(c1.getTimeInMillis());
-                /*int year = c.get(Calendar.YEAR);
+                int year = c.get(Calendar.YEAR);
                 int month= c.get(Calendar.MONTH);
                 int day = c.get(Calendar.DAY_OF_MONTH);
-                datePickerDialog.getDatePicker().init(year,month,day);*/
+                datePickerDialog.getDatePicker().init(year,month,day,null);
                 datePickerDialog.show();
             }
         });
