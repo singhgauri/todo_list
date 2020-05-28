@@ -66,7 +66,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
         private final TextView textViewDate;
         private final ImageView imageView2;
 
-
         ItemHolder(View itemView) {
             super(itemView);
             textViewName = itemView.findViewById(R.id.name);

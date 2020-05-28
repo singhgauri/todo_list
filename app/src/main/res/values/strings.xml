@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ToDoList</string>
+    <string name="app_name">My ToDos</string>
     <string name="image_des">My Image</string>
     <string name="Take_picture">Take Picture</string>
     <string name="Add_des">Add Description</string>
@@ -14,6 +14,8 @@
     <string name="setReminder">Set Reminder</string>
     <string name="cancelReminder">Cancel Reminder</string>
     <string name="inputDate">Input date</string>
+    <string name="FirstMessage">Go to your TODOs</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
