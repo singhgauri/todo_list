@@ -2,12 +2,9 @@ package com.example.todoList;
 
 import java.util.Date;
 
-import android.arch.persistence.room.TypeConverter;
+import androidx.room.TypeConverter;
 
-
-
-
-class DateConverter {
+public class DateConverter {
 
     @TypeConverter
     public Date fromTimestamp(Long value) {
@@ -20,11 +17,13 @@ class DateConverter {
             return null;
         } else {
 
-           // SimpleDateFormat dateTimeFormat = new SimpleDateFormat("dd/MM/yy");
-           // return dateTimeFormat.format(date);
+            // SimpleDateFormat dateTimeFormat = new SimpleDateFormat("dd/MM/yy");
+            // return dateTimeFormat.format(date);
             return date.getTime();
         }
     }
 }
+
+
 
 

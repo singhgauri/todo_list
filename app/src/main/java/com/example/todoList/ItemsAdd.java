@@ -6,8 +6,6 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -20,6 +18,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ItemsAdd extends AppCompatActivity {
 
@@ -190,9 +191,6 @@ public class ItemsAdd extends AppCompatActivity {
                 finish();
                 startActivity(new Intent(ItemsAdd.this, MainActivity.class));
             }
-
-
-
         }
 
         new InsertItemAsyncTask(itemDao).execute();

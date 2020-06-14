@@ -2,10 +2,9 @@ package com.example.todoList;
 import java.io.Serializable;
 import java.util.Date;
 
-
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 
 @Entity(tableName= "item_table")

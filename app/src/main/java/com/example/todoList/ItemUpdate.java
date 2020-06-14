@@ -6,8 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +22,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ItemUpdate extends AppCompatActivity {
 
@@ -54,7 +55,7 @@ public class ItemUpdate extends AppCompatActivity {
         imageView1 = findViewById(R.id.imageView1);
 
         item = (Item) getIntent().getSerializableExtra("item");
-        loadItem(item);
+        loadItem(Objects.requireNonNull(item));
         i = item.getId();
         String date0 = date1.getText().toString().trim();
 
@@ -66,7 +67,7 @@ public class ItemUpdate extends AppCompatActivity {
             Log.d("Date",date0);
             Date date111 = df.parse(date0);
             Log.d("Date",date0);
-            strDate= outputFormat.format(date111);
+            strDate= outputFormat.format(Objects.requireNonNull(date111));
         }catch(ParseException pe){
             pe.printStackTrace();
         }

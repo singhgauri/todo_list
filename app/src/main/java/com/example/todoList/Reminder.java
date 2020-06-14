@@ -1,20 +1,22 @@
 package com.example.todoList;
 
 import android.app.AlarmManager;
-import android.support.v4.app.DialogFragment;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import java.util.Calendar;
+import java.util.Objects;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 public class Reminder extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
@@ -45,7 +47,7 @@ public class Reminder extends AppCompatActivity implements TimePickerDialog.OnTi
             @Override
             public void onClick(View v) {
 
-                DialogFragment timePicker = new TimePickerFragment();
+                DialogFragment timePicker = new DialogFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
             }
         });
@@ -57,7 +59,7 @@ public class Reminder extends AppCompatActivity implements TimePickerDialog.OnTi
             }
         });
 
-        String[] dateList = strDate.split("-");
+        String[] dateList = Objects.requireNonNull(strDate).split("-");
 
         year = dateList[0];
         month = dateList[1];

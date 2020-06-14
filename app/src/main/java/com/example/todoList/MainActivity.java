@@ -2,21 +2,35 @@ package com.example.todoList;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.annotation.NonNull;
+//import android.support.design.widget.FloatingActionButton;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+//import android.support.v7.widget.LinearLayoutManager;
+//import android.support.v7.widget.RecyclerView;
+//import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import static android.content.ContentValues.TAG;
 
 public class MainActivity extends AppCompatActivity {
@@ -89,16 +103,48 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.delete_all_items) {
-            deleteAllItems();
+
+        switch( item.getItemId() ){
+
+            case R.id.delete_all_items:
+
+                deleteAllItems();
             Toast.makeText(this, "All Items Deleted", Toast.LENGTH_SHORT).show();
-
             return true;
-        }else{
-                return super.onOptionsItemSelected(item);
-        }
 
-    }
+            case R.id.logout:
+
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            auth.signOut();
+            startActivity(new Intent(MainActivity.this, FirstActivity.class));
+            finish();
+            return true;
+
+
+            case R.id.deleteAccount:
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+            user.delete()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(MainActivity.this, "Account Deleted", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(MainActivity.this,FirstActivity.class));
+                                Log.d(TAG, "User account deleted.");
+                            }else {
+                                Toast.makeText(MainActivity.this, "Failed to delete Account", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+            return true;
+
+            default :
+                return super.onOptionsItemSelected(item);
+        }}
+
+
 
 
     private void delete(Item item) {
@@ -195,7 +241,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG,"executed");
 
     }
-
 
 }
 

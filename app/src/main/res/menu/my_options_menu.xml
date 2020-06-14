@@ -7,4 +7,14 @@
         android:title="@string/Delete_All"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/logout"
+        android:title="@string/Logout"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/deleteAccount"
+        android:title="@string/DeleteAccount"
+        app:showAsAction="never" />
+
 </menu>
