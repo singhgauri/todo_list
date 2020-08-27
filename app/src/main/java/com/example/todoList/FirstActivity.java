@@ -9,7 +9,8 @@ import com.google.firebase.auth.FirebaseUser;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FirstActivity extends AppCompatActivity {
-FirebaseAuth auth;
+    private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
